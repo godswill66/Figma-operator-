@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Verify Company Details</title>
+  </head>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f5f7fb;
+      margin: 0;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card {
+      background: #fff;
+      width: 100%;
+      max-width: 720px;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    /* form layout */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    .input-icon {
+      position: relative;
+    }
+
+    .input-icon input {
+      padding-right: 40px; /* space for the icon */
+    }
+    .input-icon img {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 16px;
+      height: 16px;
+      pointer-events: none; /* allows clicking input */
+    }
+
+    .field label {
+      font-size: 13px;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+    }
+
+    input:focus,
+    select:focus {
+      border-color: #5b7cfa;
+      outline: none;
+    }
+    label input {
+      margin-right: 8px;
+      position: relative;
+      left: 50px;
+    }
+    /* button */
+    .btn {
+      margin-top: 30px;
+      width: 100%;
+      padding: 12px;
+      border-radius: 25px;
+      border: none;
+      background: #b9c9f0;
+      color: white;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: #5b7cfa;
+    }
+
+    /* responsive */
+    @media (max-width: 650px) {
+      .grid,
+      .upload-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+  <body>
+    <div class="page">
+      <div class="card">
+        <h2>Verify Company Details</h2>
+
+        <form id="verifyForm">
+          <div class="grid">
+            <div class="field">
+              <label>Company Name</label>
+              <input type="text" placeholder="Ajd-wise Limited" required />
+            </div>
+
+            <div class="field">
+              <label>Company Email</label>
+              <input type="email" placeholder="ajdwise54@yahoo.com" required />
+            </div>
+
+            <div class="field">
+              <label>Company Phone</label>
+              <input type="tel" placeholder="+234 9067845689" required />
+            </div>
+
+            <div class="field">
+              <label>Location</label>
+              <div class="input-icon">
+                <input type="text" placeholder="Abuja, Nigeria" required />
+                <img src="/assets/images/location-icon.png" alt="Location" />
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="btn">Verify</button>
+        </form>
+      </div>
+    </div>
+    <div class="upload">
+        
+    </div>
+    <script>
+      document
+        .getElementById("verifyForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          alert("Verification submitted successfully!");
+        });
+    </script>
+  </body>
+</html>
