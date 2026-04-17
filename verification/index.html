@@ -11,14 +11,15 @@
       body {
         background: #f5f7fb;
         margin: 0;
+        padding: 20px;
       }
+
       .page {
         min-height: 100vh;
         display: flex;
         align-items: center;
         justify-content: center;
       }
-
       .card {
         background: #fff;
         width: 100%;
@@ -27,24 +28,47 @@
         border-radius: 20px;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
       }
-
       h2 {
         text-align: center;
         margin-bottom: 25px;
       }
 
-      /* form layout */
+      /* Layout Grid */
       .grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 16px;
       }
+      .field label {
+        font-size: 13px;
+        margin-bottom: 6px;
+        display: block;
+        font-weight: 600;
+      }
+      input[type="text"],
+      input[type="email"],
+      input[type="tel"],
+      select {
+        width: 100%;
+        padding: 10px 12px;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+      }
+      input:focus {
+        border-color: #5b7cfa;
+        outline: #5b7cfa;
+        box-shadow: 0 0 8px rgba(91, 124, 250, 0.2);
+      }
+      /* Phone & Location specifically */
+      .phone-field {
+        display: flex;
+        gap: 8px;
+      }
+      #select-phone {
+        width: 35%;
+      }
       .input-icon {
         position: relative;
-      }
-
-      .input-icon input {
-        padding-right: 40px; /* space for the icon */
       }
       .input-icon img {
         position: absolute;
@@ -52,58 +76,21 @@
         top: 50%;
         transform: translateY(-50%);
         width: 16px;
-        height: 16px;
-        pointer-events: none; /* allows clicking input */
-      }
-      #select-phone {
-        width: 30%;
-        margin-right: 8px;
-      }
-      #phone-input {
-        width: 65%;
-      }
-      .field label {
-        font-size: 13px;
-        margin-bottom: 6px;
-        display: block;
-      }
-      input,
-      select {
-        width: 100%;
-        padding: 10px 12px;
-        border-radius: 8px;
-        border: 1px solid #ddd;
+        opacity: 0.5;
       }
 
-      input:focus,
-      select:focus {
-        border-color: #5b7cfa;
-        outline: none;
-      }
-      label input {
-        margin-right: 8px;
-        position: relative;
-        left: 50px;
-      }
+      /* Upload Area */
       .upload-container {
         grid-column: span 2;
         display: flex;
         gap: 16px;
-        margin-top: 20px;
+        margin-top: 10px;
       }
       .upload-box {
         flex: 1;
-        display: flex;
-        flex-direction: column;
       }
-
-      .upload-box label {
-        font-size: 13px;
-        margin-bottom: 6px;
-      }
-
       .upload-area {
-        height: 120px; /* expanded height */
+        height: 100px;
         border: 2px dashed #d7dff5;
         border-radius: 12px;
         background: #fafbff;
@@ -112,93 +99,125 @@
         align-items: center;
         justify-content: center;
         cursor: pointer;
-        text-align: center;
       }
-
-      .upload-area span {
-        font-size: 28px;
-        margin-bottom: 6px;
+      .upload-area img {
+        width: 30px;
+        margin-bottom: 5px;
       }
-
       .upload-area small {
-        font-size: 12px;
-        color: #666;
+        font-size: 10px;
+        color: #777;
+        text-align: center;
+        line-height: 1.4;
       }
-      span img {
-        width: 40px;
-        height: 40px;
-        bottom: 10px;
-        position: relative;
+
+      /* CHECKBOX SECTION (Matches your image) */
+      #services {
+        margin-top: 25px;
       }
-      /* button */
-      .btn {
-        width: 50%;
-        margin-left: 25%;
-        padding: 12px;
-        border-radius: 25px;
-        border: none;
-        background: #b9c9f0;
-        color: white;
+      #services p {
+        font-weight: bold;
         font-size: 15px;
+        margin-bottom: 15px;
+      }
+      .checkbox-group {
+        display: flex;
+        flex-wrap: wrap; /* Allows items to wrap to next line */
+        gap: 15px 40px; /* Space between rows and columns */
+      }
+      .checkbox-item {
+        display: flex;
+        align-items: center;
+        min-width: 120px; /* Ensures columns align vertically */
         cursor: pointer;
-        margin-top: 30px;
+        font-size: 14px;
       }
-      .btn:hover {
+      .checkbox-item input {
+        width: auto; /* Important: reset the 100% width from global style */
+        margin-right: 10px;
+        cursor: pointer;
+      }
+
+      /* VERIFY BUTTON */
+      .btn-container {
+        text-align: center;
+        margin-top: 40px;
+      }
+      .btn {
+        width: 60%;
+        padding: 15px;
+        border-radius: 30px;
+        border: none;
+        background: #c5d3f5; /* Faded blue when disabled */
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: not-allowed;
+        transition: background 0.3s ease;
+      }
+      /* Active blue color from your image */
+      .btn.active {
+        background: #5b7cfa !important;
+        cursor: pointer;
+      }
+
+      .modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+      }
+
+      .modal-content {
+        background: #fff;
+        width: 90%;
+        max-width: 350px;
+        padding: 30px;
+        border-radius: 20px;
+        text-align: center;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      .icon-box {
+        width: 70px;
+        height: 70px;
+        background: #e8efff;
+        color: #1f5bd7;
+        font-size: 32px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 15px;
+      }
+      .modal-content button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 8px;
         background: #5b7cfa;
+        color: white;
+        font-size: 14px;
+        cursor: pointer;
       }
-      #ICU-checkbox {
-        position: relative;
-        right: 330px;
+      .modal-content h3 {
+        margin-bottom: 10px;
+        color: red;
       }
-      #Carrier-checkbox {
-        position: relative;
-        right: 250px;
-        bottom: 37px;
+
+      .modal-content p {
+        font-size: 14px;
+        color: #555;
+        margin-bottom: 20px;
       }
-      #Emergency-Response-checkbox {
-        position: relative;
-        right: 150px;
-        bottom: 70px;
-      }
-      #Trauma-Response-checkbox {
-        position: relative;
-        right: 330px;
-        bottom: 60px;
-      }
-      #Other-checkbox {
-        position: relative;
-        right: 150px;
-        bottom: 97px;
-      }
-      .ICU {
-        position: relative;
-        bottom: 17px;
-        left: 20px;
-      }
-      .Carrier {
-        position: relative;
-        bottom: 54px;
-        left: 100px;
-      }
-      .emergency-Response {
-        position: relative;
-        bottom: 90px;
-        left: 200px;
-      }
-      .trauma-Response {
-        position: relative;
-        bottom: 80px;
-        left: 20px;
-      }
-      .other {
-        position: relative;
-        bottom: 115px;
-        left: 200px;
-      }
-      /* responsive */
-      @media (max-width: 650px) {
+      @media (max-width: 600px) {
         .grid,
-        .upload-grid {
+        .upload-container {
           grid-template-columns: 1fr;
         }
       }
@@ -208,37 +227,31 @@
     <div class="page">
       <div class="card">
         <h2>Verify Company Details</h2>
-
         <form id="verifyForm">
           <div class="grid">
             <div class="field">
               <label>Company Name</label>
-              <input type="text" placeholder="Ajd-wise Limited" required />
+              <input type="text" placeholder="Ajd-wise Limited" />
             </div>
             <div class="field">
               <label>Company Email</label>
-              <input type="email" placeholder="ajdwise54@yahoo.com" required />
+              <input type="email" placeholder="ajdwise54@yahoo.com" />
             </div>
 
             <div class="field">
               <label>Company Phone</label>
-              <select name="phone" id="select-phone">
-                <option value="+234">+234</option>
-                <option value="+1">+1</option>
-                <option value="+44">+44</option>
-              </select>
-              <input
-                type="tel"
-                placeholder="9067845689"
-                required
-                id="phone-input"
-              />
+              <div class="phone-field">
+                <select id="select-phone">
+                  <option value="+234">+234</option>
+                </select>
+                <input type="tel" placeholder="9067845689" />
+              </div>
             </div>
             <div class="field">
               <label>Location</label>
               <div class="input-icon">
-                <input type="text" placeholder="Abuja, Nigeria" required />
-                <img src="/assets/images/location-icon.png" alt="Location" />
+                <input type="text" placeholder="Abuja, Nigeria" />
+                <img src="../assets/images/location-icon.png" alt="Loc" />
               </div>
             </div>
             <div class="upload-container">
@@ -246,88 +259,105 @@
                 <label>Upload Company Registration Document</label>
                 <label class="upload-area">
                   <input type="file" hidden />
-                  <span><img src="/assets/images/pics-icon.png" alt="" /></span>
+                  <img
+                    src="https://cdn-icons-png.flaticon.com/512/3342/3342137.png"
+                    alt="icon"
+                  />
                   <small
-                    ><strong>click to replace </strong>or drag and drop<br />SVG,
-                    PNG, JPG, GIF(MAX 800 X 400PPX)</small
+                    ><strong>click to replace</strong> or drag and drop<br />SVG,
+                    PNG, JPG (MAX 800 X 400PX)</small
                   >
                 </label>
               </div>
-
               <div class="upload-box">
                 <label>Upload License Document</label>
                 <label class="upload-area">
-                  <input type="file" hidden required/>
-                  <span><img src="/assets/images/pics-icon.png" alt="" /></span>
+                  <input type="file" hidden />
+                  <img
+                    src="https://cdn-icons-png.flaticon.com/512/3342/3342137.png"
+                    alt="icon"
+                  />
                   <small
-                    ><strong>click to replace </strong>or drag and drop<br />SVG,
-                    PNG, JPG, GIF(MAX 800 X 400 PX)</small
+                    ><strong>click to replace</strong> or drag and drop<br />SVG,
+                    PNG, JPG (MAX 800 X 400PX)</small
                   >
                 </label>
               </div>
             </div>
           </div>
-          <div class="services">
+          <div id="services">
             <p>Type of service Rendered</p>
-            <div>
-              <input type="checkbox" name="ICU" id="ICU-checkbox" required/>
-              <label class="ICU" for="ICU-checkbox">ICU</label>
-              <input type="checkbox" name="Carrier" id="Carrier-checkbox" required/>
-              <label class="Carrier" for="Carrier-checkbox">Carrier</label>
-              <input
-                type="checkbox"
-                name="EmergencyResponse"
-                id="Emergency-Response-checkbox" required
-              />
-              <label
-                class="emergency-Response"
-                for="Emergency-Response-checkbox"
-                >Emergency Response</label
+            <div class="checkbox-group">
+              <label class="checkbox-item"
+                ><input type="checkbox" class="service-check" /> ICU</label
               >
-              <input
-                type="checkbox"
-                name="TraumaResponse"
-                id="Trauma-Response-checkbox" required
-              />
-              <label class="trauma-Response" for="Trauma-Response-checkbox"
-                >Trauma Response</label
+              <label class="checkbox-item"
+                ><input type="checkbox" class="service-check" /> Carrier</label
               >
-              <input type="checkbox" name="Other" id="Other-checkbox" required/>
-              <label class="other" for="Other-checkbox">Other</label>
+              <label class="checkbox-item"
+                ><input type="checkbox" class="service-check" /> Emergency
+                Response</label
+              >
+              <label class="checkbox-item"
+                ><input type="checkbox" class="service-check" /> Trauma
+                Response</label
+              >
+              <label class="checkbox-item"
+                ><input type="checkbox" class="service-check" /> Basic Life
+                Support (BLS)</label
+              >
+              <label class="checkbox-item"
+                ><input type="checkbox" class="service-check" /> Other</label
+              >
             </div>
           </div>
-          <button type="submit" class="btn">Verify</button>
+          <div class="btn-container">
+            <button type="submit" class="btn" id="verifyBtn" disabled>
+              Verify
+            </button>
+          </div>
         </form>
       </div>
     </div>
+    <div class="modal" id="emailModal">
+      <div class="modal-content">
+        <div class="icon-box">😞</div>
+        <h3>Oops! Something Went Wrong</h3>
+        <p>We couldn`t Submit your details for verification.</p>
+        <p>Please check your internet connection and try again later</p>
+        <button onclick="tryModal()" class="try-btn">Try Again</button>
+      </div>
+    </div>
     <script>
-      const checkboxes = document.querySelectorAll(
-        '.services input[type="checkbox"]',
-      );
-      const verifyBtn = document.querySelector(".btn");
-
-      // disable button initially
-      verifyBtn.disabled = true;
-
+      const checkboxes = document.querySelectorAll(".service-check");
+      const verifyBtn = document.getElementById("verifyBtn");
       checkboxes.forEach((checkbox) => {
         checkbox.addEventListener("change", () => {
-          const anyChecked = Array.from(checkboxes).some((cb) => cb.checked);
+          // Check if at least one checkbox is checked
+          const isAnyChecked = Array.from(checkboxes).some((cb) => cb.checked);
 
-          if (anyChecked) {
-            verifyBtn.classList.add("active");
+          if (isAnyChecked) {
             verifyBtn.disabled = false;
+            verifyBtn.classList.add("active");
           } else {
-            verifyBtn.classList.remove("active");
             verifyBtn.disabled = true;
+            verifyBtn.classList.remove("active");
           }
         });
+        document
+          .getElementById("verifyForm")
+          .addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            // Normally you would send data to backend here
+
+            // Show the modal
+            document.getElementById("emailModal").style.display = "flex";
+          });
+        function tryModal() {
+          document.getElementById("emailModal").style.display = "none";
+        }
       });
-      document
-        .getElementById("verifyForm")
-        .addEventListener("submit", function (e) {
-          e.preventDefault();
-          alert("Verification submitted successfully!");
-        });
     </script>
   </body>
 </html>

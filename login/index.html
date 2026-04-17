@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #f4f7fb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card {
+      background: #fff;
+      width: 360px;
+      padding: 28px;
+      border-radius: 14px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 24px;
+      font-size: 22px;
+    }
+
+    label {
+      font-size: 13px;
+      color: #333;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      outline: none;
+      font-size: 14px;
+    }
+
+    input:focus {
+      border-color: #0a66ff;
+    }
+
+    .field {
+      margin-bottom: 18px;
+      position: relative;
+    }
+
+    .password-toggle {
+      position: absolute;
+      right: 12px;
+      top: 38px;
+      cursor: pointer;
+      font-size: 14px;
+      color: #777;
+      user-select: none;
+    }
+
+    .forgot {
+      text-align: right;
+      font-size: 13px;
+      margin-top: -10px;
+      margin-bottom: 20px;
+    }
+
+    .forgot a {
+      text-decoration: none;
+      color: #0a66ff;
+    }
+
+    .login-btn {
+      width: 100%;
+      padding: 13px;
+      background: #0a66ff;
+      color: #fff;
+      border: none;
+      border-radius: 999px;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    .login-btn:hover {
+      background: #004fd8;
+    }
+
+    .or {
+      text-align: center;
+      margin: 18px 0;
+      font-size: 13px;
+      color: #999;
+      position: relative;
+    }
+
+    .or::before,
+    .or::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      width: 40%;
+      height: 1px;
+      background: #ddd;
+    }
+
+    .or::before {
+      left: 0;
+    }
+
+    .or::after {
+      right: 0;
+    }
+
+    .google-btn {
+      width: 100%;
+      padding: 12px;
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .google-btn img {
+      width: 18px;
+      height: 18px;
+    }
+
+    .signup {
+      text-align: center;
+      margin-top: 18px;
+      font-size: 13px;
+    }
+
+    .signup a {
+      color: #0a66ff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h2>Login</h2>
+
+    <div class="field">
+      <label>Email Address</label>
+      <input type="email" placeholder="info.name@gmail.com" />
+    </div>
+
+    <div class="field">
+      <label>Password</label>
+      <input type="password" id="password" placeholder="••••••••" />
+      <span class="password-toggle" id="togglePassword">👁</span>
+    </div>
+
+    <div class="forgot">
+      <a href="#">Forgot Password</a>
+    </div>
+
+    <button class="login-btn">Login</button>
+
+    <div class="or">OR</div>
+
+    <button class="google-btn">
+      <img
+        src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
+        alt="Google"
+      />
+      Sign In with Google
+    </button>
+
+    <div class="signup">
+      Don’t have an account?
+      <a href="#">Sign Up</a>
+    </div>
+  </div>
+
+  <script>
+    const toggle = document.getElementById("togglePassword");
+    const password = document.getElementById("password");
+
+    toggle.addEventListener("click", () => {
+      const isPassword = password.type === "password";
+      password.type = isPassword ? "text" : "password";
+      toggle.textContent = isPassword ? "🙈" : "👁";
+    });
+  </script>
+
+</body>
+</html>

@@ -56,7 +56,6 @@
       box-shadow: 0 0 0 2px rgba(31, 91, 215, 0.15);
       outline: none;
     }
-
     .password-field {
       position: relative;
     }
@@ -139,7 +138,7 @@
       width: 100%;
       height: 100%;
       background: rgba(0, 0, 0, 0.4);
-      display: flex;
+      display: none;
       align-items: center;
       justify-content: center;
       z-index: 1000;
@@ -182,7 +181,6 @@
     <div class="container">
       <div class="card">
         <h2>Sign Up</h2>
-
         <form id="signupForm">
           <label>Name of Organization</label>
           <input type="text" placeholder="Enter first name" required />
@@ -202,7 +200,6 @@
               ><img src="/assets/images/images-removebg-preview.png" alt=""
             /></span>
           </div>
-
           <label>Confirm Password</label>
           <div class="password-field">
             <input
@@ -245,24 +242,20 @@
         <button onclick="closeModal()" class="close-btn">Close</button>
       </div>
     </div>
-
     <script>
       function togglePassword(id) {
         const input = document.getElementById(id);
         input.type = input.type === "password" ? "text" : "password";
       }
-
       document
         .getElementById("signupForm")
         .addEventListener("submit", function (e) {
           e.preventDefault();
-
           // Normally you would send data to backend here
 
           // Show the modal
           document.getElementById("emailModal").style.display = "flex";
         });
-
       function closeModal() {
         document.getElementById("emailModal").style.display = "none";
       }
